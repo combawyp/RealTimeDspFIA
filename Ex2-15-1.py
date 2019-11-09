@@ -6,7 +6,8 @@
 @Description: In User Settings Edit
 @FilePath: \RealTimeDspFIA\Ex2-15-1.py
 '''
-# 显示的跟 matlab 并不一致，角度偏移不一致，而且当参数a
+# 显示的跟 matlab 并不一致，角度偏移不一致
+# 而且当参数 a[1,-1] 时运算出错，怀疑是一个不稳定的系统参数
 from scipy import signal
 import matplotlib.pyplot
 import numpy
