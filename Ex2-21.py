@@ -33,7 +33,7 @@ xn=sn+vn
 # 对正弦波运算FFT
 Xk  = numpy.fft.fft(xn,N-1)
 print(Xk)
-
+# 计算dB值
 magX    = 20*numpy.log10(abs(Xk))
 
 # 使用 figure 函数给绘图命名
