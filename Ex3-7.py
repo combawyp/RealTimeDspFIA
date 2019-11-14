@@ -1,7 +1,7 @@
 '''
 @Author: your name
 @Date: 2019-11-14 11:33:42
-@LastEditTime: 2019-11-14 14:35:52
+@LastEditTime: 2019-11-14 14:40:55
 @LastEditors: Please set LastEditors
 @Description: In User Settings Edit
 @FilePath: \RealTimeDspFIA\Ex3-7.py
@@ -38,9 +38,3 @@ matplotlib.pyplot.xlabel('Normalized frequency')
 # 使用 show 函数显示
 matplotlib.pyplot.show()
 # EOF
-'''
-       % Frequency response 
-plot((omega/pi),abs(Hd)),... % Use normalized frequency
-    xlabel('Normalized frequency'), ylabel('Magnitude'), grid;
-axis([-1 1 0 1.2]);
-'''
