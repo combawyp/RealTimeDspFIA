@@ -1,11 +1,13 @@
 '''
 @Author: your name
 @Date: 2019-11-22 16:04:34
-@LastEditTime: 2019-11-28 15:31:57
+@LastEditTime: 2019-11-28 17:17:30
 @LastEditors: Please set LastEditors
 @Description: In User Settings Edit
 @FilePath: \RealTimeDspFIA\Ex4-3.py
 '''
+
+# 程序还有问题，滤波器的相位响应图感觉不对
 from scipy import signal
 import matplotlib.pyplot
 import numpy
