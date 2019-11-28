@@ -1,7 +1,7 @@
 '''
 @Author: your name
 @Date: 2019-11-14 16:17:57
-@LastEditTime: 2019-11-14 16:54:00
+@LastEditTime: 2019-11-28 15:04:26
 @LastEditors: Please set LastEditors
 @Description: In User Settings Edit
 @FilePath: \RealTimeDspFIA\Ex3-9.py
@@ -31,8 +31,8 @@ Whd,Hhd = signal.freqz(hwn,1,omega)
 
 fig, ax1 = matplotlib.pyplot.subplots()
 ax1.set_title('Hamming')
-ax1.plot(Wd/numpy.pi, abs(Hd), 'b')
-ax1.plot(Wd/numpy.pi, abs(Hhd), 'g')
+ax1.plot(Wd/numpy.pi, abs(Hd), 'y')
+ax1.plot(Whd/numpy.pi, abs(Hhd), 'g')
 ax1.set_ylabel('Amplitude', color='b')
 ax1.set_xlabel('Frequency [pi*rad]')
 
