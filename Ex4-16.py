@@ -1,13 +1,11 @@
 '''
 @Author: your name
-@Date: 2019-11-28 15:40:29
-@LastEditTime: 2019-12-05 08:59:43
+@Date: 2019-12-05 08:58:28
+@LastEditTime: 2019-12-05 09:07:49
 @LastEditors: Please set LastEditors
 @Description: In User Settings Edit
-@FilePath: \RealTimeDspFIA\Ex4-15.py
+@FilePath: \RealTimeDspFIA\Ex4-16.py
 '''
-# 程序还有问题，输出的结果明显幅值衰减了，不知道为什么
-
 from scipy import signal
 import matplotlib.pyplot
 import numpy
@@ -64,18 +62,21 @@ Rp  = 3
 Rs  = 40
 # 计算滤波器阶数
 Nn,Wn = scipy.signal.buttord(Wp, Ws, Rp, Rs)
-print(Nn)
-print(Wn)
+# print(Nn)
+# print(Wn)
 # IIR滤波器
 b,a = scipy.signal.butter(Nn, Wn, btype='bandpass',analog=True)
-print(a)
-print(b)
-# 对白噪音进行滤波
-y   = scipy.signal.filtfilt(b, a, xn)
-# print(y)
+# print(a)
+# print(b)
+# 将直接型滤波器转换成二阶级联结构
+sos = scipy.signal.tf2sos(b,a)
+# print(sos)
+# 滤波
+y   = scipy.signal.sosfilt(sos,xn)
+print(y)
 
 # 使用 figure 函数给绘图命名
-matplotlib.pyplot.figure('例 4.15')
+matplotlib.pyplot.figure('例 4.16')
 # 使用 subplot 函数设置图的排列
 matplotlib.pyplot.subplot(211)
 # 使用 plot 函数绘制白噪音
@@ -90,7 +91,7 @@ matplotlib.pyplot.show()
 Xk = numpy.fft.fft(xn,N-1)
 Yk = numpy.fft.fft(y,N-1)
 # 使用 figure 函数给绘图命名
-matplotlib.pyplot.figure('例 4.15 频谱')
+matplotlib.pyplot.figure('例 4.16 频谱')
 # 使用 subplot 函数设置图的排列
 matplotlib.pyplot.subplot(211)
 # 使用 plot 函数绘制白噪音
@@ -101,6 +102,5 @@ matplotlib.pyplot.subplot(212)
 matplotlib.pyplot.plot(n,abs(Yk))
 # 使用 show 函数显示
 matplotlib.pyplot.show()
-
 
 # EOF
