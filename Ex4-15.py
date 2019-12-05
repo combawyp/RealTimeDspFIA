@@ -1,7 +1,7 @@
 '''
 @Author: your name
 @Date: 2019-11-28 15:40:29
-@LastEditTime: 2019-11-28 17:01:11
+@LastEditTime: 2019-12-03 11:42:48
 @LastEditors: Please set LastEditors
 @Description: In User Settings Edit
 @FilePath: \RealTimeDspFIA\Ex4-15.py
@@ -18,22 +18,41 @@ Fs  = 1000
 
 # 生成序列 0到300
 n   = numpy.arange(0, N-1, 1, dtype=int)
-print(n)
+# print(n)
 # 生成具有单位方差的随机数列
 delta  = numpy.sqrt(3)
 xn  = numpy.random.uniform(-1*delta, delta, size=N-1)
-print(xn)
+# print(xn)
 
 # 生成正弦波数列
 # 计算正玄波频率 2πf/fs
-omega   = 0.8*numpy.pi
-print(omega)
+omega   = 0.6*numpy.pi
+# print(omega)
 
 # 生成正弦波序列
 sn  = numpy.sin(omega*n)
-print(sn)
+# print(sn)
 
-#xn  = xn+3*sn
+# 生成正弦波数列
+# 计算正玄波频率 2πf/fs
+omegaB   = 0.9*numpy.pi
+# print(omega)
+
+# 生成正弦波序列
+snB  = numpy.sin(omegaB*n)
+# print(sn)
+
+# 生成正弦波数列
+# 计算正玄波频率 2πf/fs
+omegaC   = 0.2*numpy.pi
+# print(omega)
+
+# 生成正弦波序列
+snC  = numpy.sin(omegaC*n)
+# print(sn)
+
+
+xn  = xn+3*sn+3*snB+3*snC
 #xn = sn
 # 通带边沿频率,浮点序列
 Wp  = numpy.array([140, 160],dtype=float)/(Fs/2)
@@ -48,10 +67,12 @@ Nn,Wn = scipy.signal.buttord(Wp, Ws, Rp, Rs)
 print(Nn)
 print(Wn)
 # IIR滤波器
-b,a = scipy.signal.butter(Nn, Wn, btype='band',analog=True)
+b,a = scipy.signal.butter(Nn, Wn, btype='bandpass',analog=True)
+print(a)
+print(b)
 # 对白噪音进行滤波
-y   = scipy.signal.lfilter(b, a, xn)
-print(y)
+y   = scipy.signal.filtfilt(b, a, xn)
+# print(y)
 
 # 使用 figure 函数给绘图命名
 matplotlib.pyplot.figure('例 4.15')
@@ -73,11 +94,11 @@ matplotlib.pyplot.figure('例 4.15 频谱')
 # 使用 subplot 函数设置图的排列
 matplotlib.pyplot.subplot(211)
 # 使用 plot 函数绘制白噪音
-matplotlib.pyplot.plot(n,Xk)
+matplotlib.pyplot.plot(n,abs(Xk))
 # 使用 subplot 函数设置图的排列
 matplotlib.pyplot.subplot(212)
 # 使用 plot 函数绘制输出
-matplotlib.pyplot.plot(n,Yk)
+matplotlib.pyplot.plot(n,abs(Yk))
 # 使用 show 函数显示
 matplotlib.pyplot.show()
 
