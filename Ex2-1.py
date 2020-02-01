@@ -8,7 +8,7 @@
 '''
 import numpy
 import matplotlib.pyplot
-
+ 
 # 方法 0： 复杂不建议使用
 # 使用 range 函数创建列表对象  
 # 使用 iter 函数创建迭代器 
